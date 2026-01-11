@@ -1,4 +1,6 @@
 {
 	"name": "@org/test-pkg",
-	"version": "0.0.0"
+	"version": "0.0.0",
+	"description": "Test fixture for monorepo",
+	"license": "MIT"
 }
