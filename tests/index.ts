@@ -646,7 +646,8 @@ describe('git-publish', ({ describe }) => {
 				// Verify failure is from pack command (not from fs.symlink crash)
 				// Exit code 127 means "command not found" - proves pack ran and failed
 				// (If fs.symlink crashed, we wouldn't get this far)
-				expect(gitPublishProcess.stdout).toMatch(/exit code 127/);
+				// Note: error goes to stdout (TTY) or stderr (non-TTY), so check combined output
+				expect(gitPublishProcess.output).toMatch(/exit code 127/);
 			}
 		});
 
