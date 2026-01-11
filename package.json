@@ -54,7 +54,7 @@
 		"nano-spawn": "^2.0.0",
 		"pkgroll": "^2.20.1",
 		"terminal-link": "^4.0.0",
-		"tsx": "^4.20.6",
+		"tsx": "^4.21.0",
 		"typescript": "^5.9.3"
 	}
 }
