@@ -18,8 +18,8 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1
       tasuku:
-        specifier: ^2.0.5
-        version: 2.0.5
+        specifier: ^2.0.7
+        version: 2.0.7
     devDependencies:
       '@types/byte-size':
         specifier: ^8.1.2
@@ -31,8 +31,8 @@ importers:
         specifier: ^4.0.9
         version: 4.0.9
       '@types/node':
-        specifier: ^25.0.9
-        version: 25.0.9
+        specifier: ^25.1.0
+        version: 25.1.0
       '@types/npmcli__package-json':
         specifier: ^4.0.4
         version: 4.0.4
@@ -61,8 +61,8 @@ importers:
         specifier: ^1.8.0
         version: 1.8.0
       lintroll:
-        specifier: ^1.27.3
-        version: 1.27.3(@types/estree@1.0.8)(@typescript-eslint/utils@8.52.0(eslint@9.39.2)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.52.0(eslint@9.39.2)(typescript@5.9.3))(eslint@9.39.2))(jsonc-eslint-parser@2.4.1)(typescript@5.9.3)
+        specifier: ^1.28.1
+        version: 1.28.1(@types/estree@1.0.8)(@typescript-eslint/utils@8.52.0(eslint@9.39.2)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.52.0(eslint@9.39.2)(typescript@5.9.3))(eslint@9.39.2))(jsonc-eslint-parser@2.4.1)(typescript@5.9.3)
       manten:
         specifier: ^1.10.0
         version: 1.10.0
@@ -70,8 +70,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       pkgroll:
-        specifier: ^2.21.5
-        version: 2.21.5(typescript@5.9.3)
+        specifier: ^2.22.0
+        version: 2.22.0(typescript@5.9.3)
       terminal-link:
         specifier: ^5.0.0
         version: 5.0.0
@@ -639,15 +639,6 @@ packages:
       rollup:
         optional: true
 
-  '@rollup/plugin-inject@5.0.5':
-    resolution: {integrity: sha512-2+DEJbNBoPROPkgTDNe8/1YXWcqxbN5DTjASVIOx8HS+pITXushyNiBV56RB08zuptzz8gT3YfkqriTBVycepg==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-
   '@rollup/plugin-json@6.1.0':
     resolution: {integrity: sha512-EGI2te5ENk1coGeADSIwZ7G2Q8CJS2sF120T7jLw4xFw9n7wIOXHo+kIYRAoVpJAN+kmqZSoO3Fp4JtoNF4ReA==}
     engines: {node: '>=14.0.0'}
@@ -848,8 +839,8 @@ packages:
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
 
-  '@types/node@25.0.9':
-    resolution: {integrity: sha512-/rpCXHlCWeqClNBwUhDcusJxXYDjZTyE8v5oTO7WbL8eij2nKhUeU89/6xgjU7N4/Vh3He0BtyhJdQbDyhiXAw==}
+  '@types/node@25.1.0':
+    resolution: {integrity: sha512-t7frlewr6+cbx+9Ohpl0NOTKXZNV9xHRmNOvql47BFJKcEG1CxtxlPEEe+gR9uhVWM4DwhnvTF110mIL4yP9RA==}
 
   '@types/npmcli__package-json@4.0.4':
     resolution: {integrity: sha512-6QjlFUSHBmZJWuC08bz1ZCx6tm4t+7+OJXAdvM6tL2pI7n6Bh5SIp/YxQvnOLFf8MzCXs2ijyFgrzaiu1UFBGA==}
@@ -2155,8 +2146,8 @@ packages:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
 
-  lintroll@1.27.3:
-    resolution: {integrity: sha512-MAQ8xdqKkI81OOfQPqhIKg4bc1Q2NPZ3+xUmJ0UKhDLBx7nnyQjYz47avLjKC8e9qrsOvzMMhsNEDwcKMRkWzw==}
+  lintroll@1.28.1:
+    resolution: {integrity: sha512-8RtfK00GrRcCBhgrqDr1InFtR/LKV1bTcxpTXYBS6YDyGDQ3uLivoCi9+sL1vClw1N3gabOPvedlxnmX7DLqLA==}
     hasBin: true
 
   locate-path@6.0.0:
@@ -2451,8 +2442,8 @@ packages:
     resolution: {integrity: sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==}
     engines: {node: '>=12'}
 
-  pkgroll@2.21.5:
-    resolution: {integrity: sha512-TX+u8/l5sW3wiUXmM+bT1DHszSgUQacG70khzuDtKRTRTb2Ai1VWeGr1865DUhhhvJbztFupSgs/3hD3GHoCGg==}
+  pkgroll@2.22.0:
+    resolution: {integrity: sha512-PaVbFliuUdGZedkkY/NeLVLwz26c9J8GLEk6JJv7fi4NU1w0Y3JLcQcC6Cuy0fiRlELH9B1tndsdfBHWD0x89g==}
     engines: {node: '>=18'}
     hasBin: true
     peerDependencies:
@@ -2753,8 +2744,8 @@ packages:
   tar-stream@3.1.7:
     resolution: {integrity: sha512-qJj60CXt7IU1Ffyc3NJMjh6EkuCFej46zUqJ4J7pqYlThyd9bO0XBTmcOIhSzZJVWfsLks0+nle/j538YAW9RQ==}
 
-  tasuku@2.0.5:
-    resolution: {integrity: sha512-rb3fI9WGTKfzLgHhDiCJJoc/6uWlyuSuBiIPdHANPT3Ou0071BlIUiVnajnGfn4dOmLKkrmdHberWXd2EUcRjA==}
+  tasuku@2.0.7:
+    resolution: {integrity: sha512-RQ90+C89ksi6B9u3QlAanspr6UAg8L8Wx96dtddgfmYRJcLsBn/MmySzwgXrhKyteqCZiC2OHvnp/fakx8e95Q==}
 
   terminal-columns@2.0.0:
     resolution: {integrity: sha512-6IByuUjyNZJXUtwDNm+OIe62zgwwaRbH+WMNTcx05O2G5V9WhvluAAHJY8OvUdwmzMPpqAD/7EUpGdI6ae1aiQ==}
@@ -3328,7 +3319,7 @@ snapshots:
 
   '@jest/pattern@30.0.1':
     dependencies:
-      '@types/node': 25.0.9
+      '@types/node': 25.1.0
       jest-regex-util: 30.0.1
 
   '@jest/schemas@30.0.5':
@@ -3341,7 +3332,7 @@ snapshots:
       '@jest/schemas': 30.0.5
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 25.0.9
+      '@types/node': 25.1.0
       '@types/yargs': 17.0.35
       chalk: 4.1.2
 
@@ -3407,14 +3398,6 @@ snapshots:
       astring: 1.9.0
       estree-walker: 2.0.2
       fast-glob: 3.3.3
-      magic-string: 0.30.21
-    optionalDependencies:
-      rollup: 4.55.1
-
-  '@rollup/plugin-inject@5.0.5(rollup@4.55.1)':
-    dependencies:
-      '@rollup/pluginutils': 5.3.0(rollup@4.55.1)
-      estree-walker: 2.0.2
       magic-string: 0.30.21
     optionalDependencies:
       rollup: 4.55.1
@@ -3545,7 +3528,7 @@ snapshots:
 
   '@types/gunzip-maybe@1.4.3':
     dependencies:
-      '@types/node': 25.0.9
+      '@types/node': 25.1.0
 
   '@types/istanbul-lib-coverage@2.0.6': {}
 
@@ -3570,7 +3553,7 @@ snapshots:
 
   '@types/ms@2.1.0': {}
 
-  '@types/node@25.0.9':
+  '@types/node@25.1.0':
     dependencies:
       undici-types: 7.16.0
 
@@ -3582,12 +3565,12 @@ snapshots:
 
   '@types/tar-fs@2.0.4':
     dependencies:
-      '@types/node': 25.0.9
+      '@types/node': 25.1.0
       '@types/tar-stream': 3.1.4
 
   '@types/tar-stream@3.1.4':
     dependencies:
-      '@types/node': 25.0.9
+      '@types/node': 25.1.0
 
   '@types/unist@3.0.3': {}
 
@@ -5034,7 +5017,7 @@ snapshots:
   jest-mock@30.2.0:
     dependencies:
       '@jest/types': 30.2.0
-      '@types/node': 25.0.9
+      '@types/node': 25.1.0
       jest-util: 30.2.0
 
   jest-regex-util@30.0.1: {}
@@ -5042,7 +5025,7 @@ snapshots:
   jest-util@30.2.0:
     dependencies:
       '@jest/types': 30.2.0
-      '@types/node': 25.0.9
+      '@types/node': 25.1.0
       chalk: 4.1.2
       ci-info: 4.3.1
       graceful-fs: 4.2.11
@@ -5098,7 +5081,7 @@ snapshots:
       prelude-ls: 1.2.1
       type-check: 0.4.0
 
-  lintroll@1.27.3(@types/estree@1.0.8)(@typescript-eslint/utils@8.52.0(eslint@9.39.2)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.52.0(eslint@9.39.2)(typescript@5.9.3))(eslint@9.39.2))(jsonc-eslint-parser@2.4.1)(typescript@5.9.3):
+  lintroll@1.28.1(@types/estree@1.0.8)(@typescript-eslint/utils@8.52.0(eslint@9.39.2)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.52.0(eslint@9.39.2)(typescript@5.9.3))(eslint@9.39.2))(jsonc-eslint-parser@2.4.1)(typescript@5.9.3):
     dependencies:
       '@eslint-community/eslint-plugin-eslint-comments': 4.5.0(eslint@9.39.2)
       '@eslint/js': 9.39.2
@@ -5621,15 +5604,13 @@ snapshots:
 
   picomatch@4.0.3: {}
 
-  pkgroll@2.21.5(typescript@5.9.3):
+  pkgroll@2.22.0(typescript@5.9.3):
     dependencies:
       '@rollup/plugin-alias': 6.0.0(rollup@4.55.1)
       '@rollup/plugin-commonjs': 29.0.0(rollup@4.55.1)
       '@rollup/plugin-dynamic-import-vars': 2.1.5(rollup@4.55.1)
-      '@rollup/plugin-inject': 5.0.5(rollup@4.55.1)
       '@rollup/plugin-json': 6.1.0(rollup@4.55.1)
       '@rollup/plugin-node-resolve': 16.0.3(rollup@4.55.1)
-      '@rollup/pluginutils': 5.3.0(rollup@4.55.1)
       cjs-module-lexer: 2.2.0
       esbuild: 0.26.0
       magic-string: 0.30.21
@@ -6033,7 +6014,7 @@ snapshots:
     transitivePeerDependencies:
       - react-native-b4a
 
-  tasuku@2.0.5: {}
+  tasuku@2.0.7: {}
 
   terminal-columns@2.0.0: {}
 
