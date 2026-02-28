@@ -1,13 +1,15 @@
 import path from 'node:path';
-import { describe, expect } from 'manten';
+import {
+	describe, test, expect, onFinish, onTestFail,
+} from 'manten';
 import { createFixture } from 'fs-fixture';
 import spawn from 'nano-spawn';
 import yaml from 'js-yaml';
 import { createGit } from './utils/create-git.js';
 import { gitPublish } from './utils/git-publish.js';
 
-describe('git-publish', ({ describe }) => {
-	describe('Error cases', ({ test }) => {
+describe('git-publish', () => {
+	describe('Error cases', () => {
 		test('Fails if not in git repository', async () => {
 			await using fixture = await createFixture();
 
@@ -63,13 +65,13 @@ describe('git-publish', ({ describe }) => {
 		});
 	});
 
-	describe('Publish', async ({ test, describe, onFinish }) => {
+	describe('Publish', async () => {
 		const remoteFixture = await createFixture();
 		const remoteGit = createGit(remoteFixture.path);
 		await remoteGit.init(['--bare']);
 		onFinish(() => remoteFixture.rm());
 
-		test('preserves history', async ({ onTestFail }) => {
+		test('preserves history', async () => {
 			const branchName = 'test-preserve-history';
 
 			await using fixture = await createFixture({
@@ -111,7 +113,7 @@ describe('git-publish', ({ describe }) => {
 			expect(Number(commitCount)).toBe(2);
 		});
 
-		test('--fresh resets history', async ({ onTestFail }) => {
+		test('--fresh resets history', async () => {
 			const branchName = 'test-fresh';
 
 			await using fixture = await createFixture({
@@ -153,7 +155,7 @@ describe('git-publish', ({ describe }) => {
 			expect(Number(commitCount)).toBe(1);
 		});
 
-		test('monorepo package', async ({ onTestFail }) => {
+		test('monorepo package', async () => {
 			const branchName = 'test-monorepo';
 			const packageName = '@org/test-pkg';
 
@@ -209,8 +211,8 @@ describe('git-publish', ({ describe }) => {
 			]);
 		});
 
-		describe('pnpm', ({ test }) => {
-			test('catalog protocol is resolved', async ({ onTestFail }) => {
+		describe('pnpm', () => {
+			test('catalog protocol is resolved', async () => {
 				const branchName = 'test-pnpm-catalog';
 				const msVersion = '2.1.3';
 
@@ -252,7 +254,7 @@ describe('git-publish', ({ describe }) => {
 				expect(packageJson.dependencies.ms).toBe(msVersion);
 			});
 
-			test('monorepo workspace structure is accessible', async ({ onTestFail }) => {
+			test('monorepo workspace structure is accessible', async () => {
 				const branchName = 'test-pnpm-monorepo';
 				const packageName = '@org/monorepo-test';
 				const msVersion = '2.1.3';
@@ -305,7 +307,7 @@ describe('git-publish', ({ describe }) => {
 				expect(packageJson.dependencies.ms).toBe(msVersion);
 			});
 
-			test('monorepo prepack hook can access root node_modules', async ({ onTestFail }) => {
+			test('monorepo prepack hook can access root node_modules', async () => {
 				const branchName = 'test-monorepo-root-deps';
 				const packageName = '@org/root-deps-test';
 
@@ -356,7 +358,7 @@ describe('git-publish', ({ describe }) => {
 				expect(packageJson.scripts).toBeUndefined();
 			});
 
-			test('monorepo prepack hook can access package-level node_modules', async ({ onTestFail }) => {
+			test('monorepo prepack hook can access package-level node_modules', async () => {
 				const branchName = 'test-monorepo-pkg-deps';
 				const packageName = '@org/pkg-deps-test';
 
@@ -408,7 +410,7 @@ describe('git-publish', ({ describe }) => {
 			});
 		});
 
-		test('npm pack is used', async ({ onTestFail }) => {
+		test('npm pack is used', async () => {
 			const branchName = 'test-npm-pack';
 
 			// This test verifies that npm pack is used (with lifecycle hooks)
@@ -463,7 +465,7 @@ describe('git-publish', ({ describe }) => {
 			expect(prepackContent.trim()).toBe('prepack-ran');
 		});
 
-		test('dependencies are accessible in pack hooks', async ({ onTestFail }) => {
+		test('dependencies are accessible in pack hooks', async () => {
 			const branchName = 'test-deps-in-hooks';
 
 			// This test verifies that dependencies with binaries are accessible during pack
@@ -513,7 +515,7 @@ describe('git-publish', ({ describe }) => {
 			expect(packageJson.scripts).toBeUndefined();
 		});
 
-		test('publishes existing dist without build hooks', async ({ onTestFail }) => {
+		test('publishes existing dist without build hooks', async () => {
 			const branchName = 'test-existing-dist';
 
 			// This test verifies that existing files are published even without build hooks
@@ -565,7 +567,7 @@ describe('git-publish', ({ describe }) => {
 			expect(utilsContent).toBe('export const util = () => {};');
 		});
 
-		test('prepack hook does not modify working directory', async ({ onTestFail }) => {
+		test('prepack hook does not modify working directory', async () => {
 			const branchName = 'test-prepack-isolation';
 
 			// This test verifies that prepack hooks don't pollute the working directory
@@ -610,7 +612,7 @@ describe('git-publish', ({ describe }) => {
 			expect(publishedFileContent.trim()).toBe('hook-ran');
 		});
 
-		test('fails gracefully when pack hook dependencies are missing', async ({ onTestFail }) => {
+		test('fails gracefully when pack hook dependencies are missing', async () => {
 			const branchName = 'test-missing-deps';
 
 			// Test that script doesn't crash on ENOENT when symlinking node_modules
@@ -651,7 +653,7 @@ describe('git-publish', ({ describe }) => {
 			}
 		});
 
-		test('publishes gitignored files specified by glob pattern', async ({ onTestFail }) => {
+		test('publishes gitignored files specified by glob pattern', async () => {
 			const branchName = 'test-glob-pattern';
 
 			// Test that glob patterns in "files" field work correctly
@@ -698,7 +700,7 @@ describe('git-publish', ({ describe }) => {
 			]);
 		});
 
-		test('publishes gitignored directory recursively', async ({ onTestFail }) => {
+		test('publishes gitignored directory recursively', async () => {
 			const branchName = 'test-directory-recursive';
 
 			// Test that directory in "files" field includes all files recursively
@@ -744,7 +746,7 @@ describe('git-publish', ({ describe }) => {
 			]);
 		});
 
-		test('publishes gitignored dotfiles', async ({ onTestFail }) => {
+		test('publishes gitignored dotfiles', async () => {
 			const branchName = 'test-dotfiles';
 
 			// Test that dotfiles specified in "files" field are published

@@ -27,7 +27,8 @@
 		"lint": "lintroll --cache",
 		"type-check": "tsc",
 		"test": "tsx tests",
-		"prepack": "pnpm build && clean-pkg-json"
+		"prepack": "pnpm build && clean-pkg-json",
+		"prepare": "skills-npm"
 	},
 	"dependencies": {
 		"fast-glob": "^3.3.3",
@@ -50,9 +51,10 @@
 		"js-yaml": "^4.1.1",
 		"kolorist": "^1.8.0",
 		"lintroll": "^1.28.1",
-		"manten": "^1.10.0",
+		"manten": "^2.0.0",
 		"nano-spawn": "^2.0.0",
 		"pkgroll": "^2.22.0",
+		"skills-npm": "^1.0.0",
 		"terminal-link": "^5.0.0",
 		"tsx": "^4.21.0",
 		"typescript": "^5.9.3"
