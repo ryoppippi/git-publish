@@ -2,9 +2,11 @@
 	"compilerOptions": {
 		"target": "ESNext",
 		"module": "NodeNext",
+		"types": [
+			"node",
+		],
 		"allowImportingTsExtensions": true,
 		"erasableSyntaxOnly": true,
-		"strict": true,
 		"noEmit": true,
 		"verbatimModuleSyntax": true,
 		"skipLibCheck": true,
