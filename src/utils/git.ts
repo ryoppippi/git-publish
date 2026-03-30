@@ -1,5 +1,5 @@
 import type { SubprocessError, Options as SpawnOptions } from 'nano-spawn';
-import { simpleSpawn } from './simple-spawn.js';
+import { simpleSpawn } from './simple-spawn.ts';
 
 export const gitStatusTracked = (
 	options?: SpawnOptions,

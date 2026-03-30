@@ -20,13 +20,14 @@
 	"files": [
 		"dist"
 	],
+	"type": "module",
 	"bin": "dist/index.js",
 	"packageManager": "pnpm@10.29.3",
 	"scripts": {
 		"build": "pkgroll --minify --clean-dist --export-condition=node",
 		"lint": "lintroll --cache",
 		"type-check": "tsc",
-		"test": "tsx tests",
+		"test": "node tests/index.ts",
 		"prepack": "pnpm build && clean-pkg-json",
 		"prepare": "skills-npm"
 	},
@@ -37,7 +38,6 @@
 		"tasuku": "^2.3.0"
 	},
 	"devDependencies": {
-		"@types/byte-size": "^8.1.2",
 		"@types/gunzip-maybe": "^1.4.3",
 		"@types/js-yaml": "^4.0.9",
 		"@types/node": "^25.3.5",
@@ -56,7 +56,6 @@
 		"pkgroll": "^2.27.0",
 		"skills-npm": "^1.0.0",
 		"terminal-link": "^5.0.0",
-		"tsx": "^4.21.0",
 		"typescript": "^5.9.3"
 	}
 }

@@ -8,22 +8,22 @@ import type { PackageJson } from '@npmcli/package-json';
 import byteSize from 'byte-size';
 import { cyan, dim, lightBlue } from 'kolorist';
 import terminalLink from 'terminal-link';
-import { name, version, description } from '../package.json';
-import { simpleSpawn } from './utils/simple-spawn';
+import packageMeta from '../package.json' with { type: 'json' };
+import { simpleSpawn } from './utils/simple-spawn.ts';
 import {
 	assertCleanTree, getCurrentBranchOrTagName, gitStatusTracked, getCurrentCommit,
-} from './utils/git.js';
-import { readJson } from './utils/read-json.js';
-import { detectPackageManager } from './utils/detect-package-manager.js';
-import { packPackage } from './utils/pack-package.js';
-import { extractTarball } from './utils/extract-tarball.js';
+} from './utils/git.ts';
+import { readJson } from './utils/read-json.ts';
+import { detectPackageManager } from './utils/detect-package-manager.ts';
+import { packPackage } from './utils/pack-package.ts';
+import { extractTarball } from './utils/extract-tarball.ts';
 
 const { stringify } = JSON;
 
 (async () => {
 	const argv = cli({
-		name,
-		version,
+		name: packageMeta.name,
+		version: packageMeta.version,
 		flags: {
 			branch: {
 				type: String,
@@ -55,7 +55,7 @@ const { stringify } = JSON;
 			},
 		},
 		help: {
-			description,
+			description: packageMeta.description,
 		},
 	});
 

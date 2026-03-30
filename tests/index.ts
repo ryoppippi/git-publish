@@ -5,8 +5,8 @@ import {
 import { createFixture } from 'fs-fixture';
 import spawn from 'nano-spawn';
 import yaml from 'js-yaml';
-import { createGit } from './utils/create-git.js';
-import { gitPublish } from './utils/git-publish.js';
+import { createGit } from './utils/create-git.ts';
+import { gitPublish } from './utils/git-publish.ts';
 
 describe('git-publish', () => {
 	describe('Error cases', () => {

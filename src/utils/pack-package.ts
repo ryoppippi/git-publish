@@ -2,8 +2,8 @@ import path from 'node:path';
 import fs from 'node:fs/promises';
 import spawn from 'nano-spawn';
 import glob from 'fast-glob';
-import type { PackageManager } from './detect-package-manager.js';
-import { readJson } from './read-json.js';
+import type { PackageManager } from './detect-package-manager.ts';
+import { readJson } from './read-json.ts';
 
 const copyFile = async (source: string, destination: string): Promise<void> => {
 	await fs.mkdir(path.dirname(destination), { recursive: true });
