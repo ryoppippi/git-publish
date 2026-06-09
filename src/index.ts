@@ -1,7 +1,7 @@
 import path from 'node:path';
 import fs from 'node:fs/promises';
 import os from 'node:os';
-import spawn, { type SubprocessError } from 'nano-spawn';
+import spawn, { SubprocessError } from 'nano-spawn';
 import task from 'tasuku';
 import { cli } from 'cleye';
 import type { PackageJson } from '@npmcli/package-json';
@@ -178,20 +178,35 @@ const { stringify } = JSON;
 					checkoutBranch.clear();
 				}
 
-				const packTask = await task('Packing package', async ({ setWarning }) => {
+				const packTask = await task('Packing package', async ({ streamPreview, setWarning }) => {
 					if (dry) {
 						setWarning('');
 						return;
 					}
 
-					const tarballPath = await packPackage(
-						packageManager,
-						packWorktreePath,
-						packTemporaryDirectory,
-						cwd,
-						gitRootPath,
-						gitSubdirectory,
-					);
+					let tarballPath;
+					try {
+						tarballPath = await packPackage(
+							packageManager,
+							packWorktreePath,
+							packTemporaryDirectory,
+							cwd,
+							gitRootPath,
+							gitSubdirectory,
+						);
+					} catch (error) {
+						// The pack subprocess (e.g. a failing prepack/build script) captures
+						// the real reason in its output, but nano-spawn's error.message only
+						// says "Command failed with exit code N". Surface the output inline
+						// under this task so the failure is diagnosable.
+						if (error instanceof SubprocessError) {
+							const details = error.output || error.stderr;
+							if (details) {
+								streamPreview.write(details);
+							}
+						}
+						throw error;
+					}
 
 					return await extractTarball(tarballPath, publishWorktreePath);
 				});
@@ -315,7 +330,12 @@ const { stringify } = JSON;
 				}
 			}
 		},
-	);
+	).catch(() => {
+		// Any failure here is already rendered within the task tree above
+		// (including the pack subprocess output), so exit without re-printing it.
+		// Set exitCode (instead of process.exit) so tasuku can flush its final render.
+		process.exitCode = 1;
+	});
 })().catch((error) => {
 	console.error('Error:', error.message);
 	process.exit(1);

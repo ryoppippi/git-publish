@@ -653,6 +653,47 @@ describe('git-publish', () => {
 			}
 		});
 
+		test('surfaces the underlying reason when pack fails', async () => {
+			const branchName = 'test-pack-error-output';
+			const missingBinary = 'this-binary-does-not-exist-xyz';
+
+			// When pack fails, the subprocess's stderr/stdout (the actual reason,
+			// e.g. a failing prepack/build script) must be surfaced. Otherwise the
+			// user only sees "Command failed with exit code N" with no way to debug.
+			await using fixture = await createFixture({
+				'package.json': JSON.stringify({
+					name: 'test-pack-error-output',
+					version: '1.0.0',
+					scripts: {
+						prepack: missingBinary,
+					},
+				}, null, 2),
+				'index.js': 'export const main = true;',
+			});
+
+			const git = createGit(fixture.path);
+			await git.init([`--initial-branch=${branchName}`]);
+			await git('add', ['.']);
+			await git('commit', ['-m', 'Initial commit']);
+			await git('remote', ['add', 'origin', remoteFixture.path]);
+
+			const gitPublishProcess = await gitPublish(fixture.path, ['--fresh']);
+			onTestFail(() => {
+				console.log(gitPublishProcess);
+			});
+
+			expect('exitCode' in gitPublishProcess).toBe(true);
+			// The missing binary name only appears in the pack subprocess output,
+			// never in nano-spawn's error.message. Asserting on it proves the
+			// underlying reason was surfaced rather than swallowed.
+			expect(gitPublishProcess.output).toMatch(missingBinary);
+
+			// The failure is rendered inline within the task tree, so it must NOT
+			// also be re-logged by the top-level error handler, which would print
+			// "Error: Command failed with exit code N: …".
+			expect(gitPublishProcess.output).not.toMatch('Error: Command failed');
+		});
+
 		test('publishes gitignored files specified by glob pattern', async () => {
 			const branchName = 'test-glob-pattern';
 
