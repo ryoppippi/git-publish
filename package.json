@@ -44,7 +44,7 @@
 		"@types/npmcli__package-json": "^4.0.4",
 		"@types/tar-fs": "^2.0.4",
 		"byte-size": "^9.0.1",
-		"clean-pkg-json": "^1.4.2",
+		"clean-pkg-json": "^2.0.0",
 		"cleye": "^2.6.0",
 		"find-up-simple": "^1.0.1",
 		"fs-fixture": "^2.14.0",
